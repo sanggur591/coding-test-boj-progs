@@ -21,8 +21,10 @@ class Solution {
                 int rNumRoom = (rNum-1)%3;
                 int lNumFloor = (lNum-1)/3;
                 int lNumRoom = (lNum-1)%3;
+                int rDistance = Math.abs(rNumFloor-floor)+Math.abs(rNumRoom-room);
+                int lDistance = Math.abs(lNumFloor-floor)+Math.abs(lNumRoom-room);
                 //거리가 같을때
-                if(Math.abs(rNumFloor-floor)+Math.abs(rNumRoom-room)==Math.abs(lNumFloor-floor)+Math.abs(lNumRoom-room)){
+                if(rDistance==lDistance){
                     if(hand.equals("left")){
                         lNum=numbers[i];
                         answer=answer+"L";
@@ -32,12 +34,12 @@ class Solution {
                     }
                 }
                 //오가 더 가까울때
-                else if(Math.abs(rNumFloor-floor)+Math.abs(rNumRoom-room)>Math.abs(lNumFloor-floor)+Math.abs(lNumRoom-room)){
+                else if(rDistance>lDistance){
                     lNum=numbers[i];
                     answer=answer+"L";
                 }
                 //왼이 더 가까울때
-                else if(Math.abs(rNumFloor-floor)+Math.abs(rNumRoom-room)<Math.abs(lNumFloor-floor)+Math.abs(lNumRoom-room)){
+                else if(rDistance<lDistance){
                     rNum=numbers[i];
                     answer=answer+"R";
                 }
